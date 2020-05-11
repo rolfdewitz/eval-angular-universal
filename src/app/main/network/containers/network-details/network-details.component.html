@@ -1,0 +1,21 @@
+<div *ngIf="selectedNetwork$ | async as selectedNetwork"
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="space-evenly stretch"
+  fxFill
+  class="content w-full"
+>
+  <div *ngFor="let item of selectedNetwork.stations"
+    fxFlex="calc(33.3%)"
+    fxFlex.lt-md="calc(50%)"
+    fxFlex.xs="calc(90%)"
+    fxLayoutAlign="space-evenly stretch">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" class="card m-3">
+      <mat-card-header>
+        <mat-card-title>
+          {{ item.name }} (free bikes: {{ item.free_bikes }})
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>

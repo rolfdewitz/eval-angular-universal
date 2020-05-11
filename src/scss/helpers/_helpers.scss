@@ -1,0 +1,94 @@
+
+// Border helpers
+$border-style: 1px solid rgba(0, 0, 0, 0.12);
+
+.border,
+.b {
+    border: $border-style;
+}
+
+.border-top,
+.bt {
+    border-top: $border-style;
+}
+
+.border-right,
+.br {
+    border-right: $border-style;
+}
+
+.border-bottom,
+.bb {
+    border-bottom: $border-style;
+}
+
+.border-left,
+.bl {
+    border-left: $border-style;
+}
+
+.border-horizontal,
+.b-x {
+    border-left: $border-style;
+    border-right: $border-style;
+}
+
+.border-vertical,
+.by {
+    border-top: $border-style;
+    border-bottom: $border-style;
+}
+
+// Displays
+.d-flex {
+    display: flex;
+}
+.d-none {
+    display: none;
+}
+.d-block {
+    display: block;
+}
+.d-inline-block {
+    display: inline-block;
+}
+
+// Z Index
+.zindex-1 {
+    z-index: 1;
+}
+.zindex-10 {
+    z-index: 10;
+}
+
+// Vertical Alignment
+.v-align-sub {
+    vertical-align: sub !important;
+}
+.v-align-middle {
+    vertical-align: middle !important;
+}
+.v-align-top {
+    vertical-align: middle !important;
+}
+
+.min-h-200 {
+    min-height: 200px;
+}
+
+// backgrounds
+.bg-white {
+    background-color: #fff !important;
+}
+
+.w-full {
+    width: 100% !important;
+}
+
+.h-full {
+    height: 100% !important;
+}
+
+.scrollable {
+    overflow-y: scroll;
+}

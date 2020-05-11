@@ -1,16 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
@@ -23,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have as title 'eval-angular-universal'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('eval-angular-universal');
+    expect(app.title).toEqual('Eval Angular Universal');
   });
 
   it('should render title', () => {

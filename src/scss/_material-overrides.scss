@@ -1,0 +1,87 @@
+@import '~@angular/material/theming';
+@import './theme';
+
+$breakpoints: (
+  xs: (
+    begin: 0,
+    end: 599px,
+  ),
+  sm: (
+    begin: 600px,
+    end: 959px,
+  ),
+  md: (
+    begin: 960px,
+    end: 1279px,
+  ),
+  lg: (
+    begin: 1280px,
+    end: 1919px,
+  ),
+  xl: (
+    begin: 1920px,
+    end: 5000px,
+  ),
+) !default;
+
+$overlapping-gt: (
+  gt-xs: 600px,
+  gt-sm: 960px,
+  gt-md: 1280px,
+  gt-lg: 1920px,
+) !default;
+
+$overlapping-lt: (
+  lt-sm: 599px,
+  lt-md: 959px,
+  lt-lg: 1279px,
+  lt-xl: 1919px,
+) !default;
+
+@mixin media-query($breakpoint) {
+  @if str_index($breakpoint, 'gt') == 1 {
+    $min: map-get($overlapping-gt, $breakpoint);
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if str_index($breakpoint, 'lt') == 1 {
+    $max: map-get($overlapping-lt, $breakpoint);
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    $min: map-get(map-get($breakpoints, $breakpoint), begin);
+    $max: map-get(map-get($breakpoints, $breakpoint), end);
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+// texts with colors
+.text-primary {
+  color: mat-color($app-primary, default) !important;
+}
+.text-accent {
+  color: mat-color($app-accent, default) !important;
+}
+.text-warn {
+  color: mat-color($app-warn, default) !important;
+}
+.text-success {
+  color: mat-color($app-green, 500) !important;
+}
+
+// Links
+a {
+  color: mat-color($app-accent);
+  text-decoration: none;
+
+  &:not(.mat-button):not(.mat-raised-button):not(.mat-icon-button) {
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: lighten($color: mat-color($app-accent), $amount: 20)
+    }
+  }
+}

@@ -21,7 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PageNotFoundComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'bi24' }),
+    BrowserModule.withServerTransition({ appId: 'eau' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,

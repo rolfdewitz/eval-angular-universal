@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NetworkDetailsComponent } from './network-details.component.component';
+import { NetworkDetailsComponent } from './network-details.component';
 
 describe('NetworkDetailsComponent', () => {
   let component: NetworkDetailsComponent;

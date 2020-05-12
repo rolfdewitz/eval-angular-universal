@@ -5,7 +5,7 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
   { path: '', component: fromContainers.NetworkListComponent },
-  { path: ':id', component: fromContainers.NetworkDetailsComponent }
+  { path: ':id', component: fromContainers.NetworkDetailsComponent },
 ];
 
 @NgModule({

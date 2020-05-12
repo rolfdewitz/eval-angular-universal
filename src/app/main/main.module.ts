@@ -12,6 +12,6 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     MainRoutingModule,
     SharedModule
-  ]
+  ],
 })
-export class MainModule { }
+export class MainModule {}

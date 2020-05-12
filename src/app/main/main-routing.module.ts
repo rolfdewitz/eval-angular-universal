@@ -6,18 +6,23 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
   {
-    path: '', component: fromContainers.MainComponent,
+    path: '',
+    component: fromContainers.MainComponent,
     children: [
-      { path: '', loadChildren: () => import('./network/network.module').then(m => m.NetworkModule) },
+      {
+        path: '',
+        loadChildren: () =>
+          import('./network/network.module').then((m) => m.NetworkModule),
+      },
       // without module
       // { path: '', component: fromNetworkContainers.NetworkListComponent },
       // { path: ':id', component: fromNetworkContainers.NetworkDetailsComponent },
-    ]
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class MainRoutingModule {}

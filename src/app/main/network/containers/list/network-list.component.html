@@ -1,17 +1,24 @@
 <h2 class="m-3">Companies</h2>
-<div *ngIf="networks$ | async as networks"
+<div
+  *ngIf="networks$ | async as networks"
   fxLayout="row wrap"
   fxLayout.xs="column"
   fxLayoutAlign="space-evenly stretch"
   fxFill
-  class="w-full">
+  class="w-full"
+>
   <div *ngFor="let item of networks">
-    <a [routerLink]="[item.id]" class="link-button"><mat-card
-      fxLayout="column" fxLayoutAlign="center center" class="m-3">
-      <mat-card-header>
-        <mat-card-title>{{ item.name }}</mat-card-title>
-        <mat-card-subtitle>{{ item.location.city }} ({{ item.location.country }})</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card></a>
+    <a [routerLink]="[item.id]" class="link-button"
+      ><mat-card fxLayout="column" fxLayoutAlign="center center" class="m-3">
+        <mat-card-header>
+          <mat-card-title>{{ item.name }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ item.location.city }} ({{
+              item.location.country
+            }})</mat-card-subtitle
+          >
+        </mat-card-header>
+      </mat-card></a
+    >
   </div>
 </div>

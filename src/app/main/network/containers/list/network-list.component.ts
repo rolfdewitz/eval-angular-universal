@@ -14,20 +14,16 @@ import { GetNetworks } from '../../../../appStore/app.actions';
 @Component({
   selector: 'app-network-list',
   templateUrl: './network-list.component.html',
-  styleUrls: ['./network-list.component.scss']
+  styleUrls: ['./network-list.component.scss'],
 })
 export class NetworkListComponent implements OnInit {
-
   @Select(AppState.networks) networks$: Observable<any[]>;
 
   listItems: any[];
 
-  constructor(
-    readonly store: Store
-    ) { }
+  constructor(readonly store: Store) {}
 
   ngOnInit(): void {
     this.store.dispatch(new GetNetworks());
   }
-
 }

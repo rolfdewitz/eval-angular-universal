@@ -16,20 +16,16 @@ import { GetNetworkDetails } from '../../../../appStore/app.actions';
 @Component({
   selector: 'app-network-details',
   templateUrl: './network-details.component.html',
-  styleUrls: ['./network-details.component.scss']
+  styleUrls: ['./network-details.component.scss'],
 })
 export class NetworkDetailsComponent implements OnInit {
-
   id: string;
 
   @Select(AppState.selectedNetwork) selectedNetwork$: Observable<any[]>;
 
   listItems: any[];
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private store: Store,
-    ) {}
+  constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;

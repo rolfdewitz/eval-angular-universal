@@ -1,11 +1,18 @@
 <h2 class="m-3">Company details</h2>
-<mat-card *ngIf="selectedNetwork$ | async as selectedNetwork"
+<mat-card
+  *ngIf="selectedNetwork$ | async as selectedNetwork"
   fxLayout="row wrap"
   fxLayout.xs="column"
-  fxLayoutAlign="space-evenly stretch" class="m-3">
+  fxLayoutAlign="space-evenly stretch"
+  class="m-3"
+>
   <mat-card-header>
     <mat-card-title>{{ selectedNetwork.name }}</mat-card-title>
-    <mat-card-subtitle>{{ selectedNetwork.location.city }} ({{ selectedNetwork.location.country }})</mat-card-subtitle>
+    <mat-card-subtitle
+      >{{ selectedNetwork.location.city }} ({{
+        selectedNetwork.location.country
+      }})</mat-card-subtitle
+    >
   </mat-card-header>
   <mat-card-content>
     <h3>Stations</h3>

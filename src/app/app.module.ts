@@ -16,10 +16,7 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent
-  ],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'eau' }),
     BrowserAnimationsModule,
@@ -34,4 +31,4 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   providers: [NetworkService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

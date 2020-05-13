@@ -18,7 +18,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }).withServerTransition({ appId: 'eau' }),
+    BrowserModule.withServerTransition({
+      appId: 'serverApp',
+    }).withServerTransition({ appId: 'eau' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,

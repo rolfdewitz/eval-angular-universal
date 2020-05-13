@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MaterialModule } from '../material/material.module';
 
 import * as fromComponents from './components';
+import * as fromDirectives from './directives';
 
 @NgModule({
   imports: [
@@ -17,13 +19,15 @@ import * as fromComponents from './components';
     HttpClientModule,
   ],
   exports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
     fromComponents.components,
+    fromDirectives.directives
   ],
-  declarations: [fromComponents.components],
+  declarations: [fromComponents.components, fromDirectives.directives],
 })
 export class SharedModule {}

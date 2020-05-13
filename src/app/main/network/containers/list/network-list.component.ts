@@ -18,7 +18,6 @@ import { GetNetworks } from '../../../../appStore/app.actions';
   styleUrls: ['./network-list.component.scss'],
 })
 export class NetworkListComponent implements OnInit {
-
   @Select(AppState.networks) networks$: Observable<any[]>;
 
   listItems: any[];
@@ -28,5 +27,4 @@ export class NetworkListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new GetNetworks());
   }
-
 }

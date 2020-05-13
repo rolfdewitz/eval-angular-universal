@@ -24,6 +24,6 @@ import * as fromComponents from './components';
     HttpClientModule,
     fromComponents.components,
   ],
-  declarations: [fromComponents.components]
+  declarations: [fromComponents.components],
 })
-export class SharedModule { }
+export class SharedModule {}

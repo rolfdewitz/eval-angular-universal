@@ -7,10 +7,6 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [...fromContainers.containers],
-  imports: [
-    CommonModule,
-    NetworkRoutingModule,
-    SharedModule,
-  ],
+  imports: [CommonModule, NetworkRoutingModule, SharedModule],
 })
 export class NetworkModule {}

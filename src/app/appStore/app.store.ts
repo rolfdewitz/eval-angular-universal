@@ -6,7 +6,11 @@ import { switchMap, map, catchError } from 'rxjs/operators';
 
 import { AppStateModel } from './app-state.model';
 import { NetworkService } from '../main/services/network.service';
-import { GetNetworks, GetNetworkDetails, GetFavouriteNetworkStation } from './app.actions';
+import {
+  GetNetworks,
+  GetNetworkDetails,
+  GetFavouriteNetworkStation,
+} from './app.actions';
 
 @State<AppStateModel>({
   name: 'app',
@@ -14,12 +18,10 @@ import { GetNetworks, GetNetworkDetails, GetFavouriteNetworkStation } from './ap
     networks: [],
     selectedNetwork: null,
     favouredNetworkStation: null,
-  }
+  },
 })
-
 @Injectable()
 export class AppState {
-
   @Selector()
   static networks(state: AppStateModel): any[] | null {
     return state.networks;
@@ -35,10 +37,7 @@ export class AppState {
     return state.favouredNetworkStation;
   }
 
-  constructor(
-    private store: Store,
-    readonly service: NetworkService
-  ) { }
+  constructor(private store: Store, readonly service: NetworkService) {}
 
   @Action(GetNetworks)
   getNetworks(ctx: StateContext<AppStateModel>, action: GetNetworks) {
@@ -46,7 +45,7 @@ export class AppState {
       map((res: any) => {
         if (res && res.networks && res.networks.length > 0) {
           ctx.patchState({
-            networks: res.networks
+            networks: res.networks,
           });
           console.warn('GetNetworks #result', res.networks.length);
           return;
@@ -60,18 +59,21 @@ export class AppState {
   }
 
   @Action(GetNetworkDetails) // todo: change to GetSelectedNetwork
-  getNetworkDetails(ctx: StateContext<AppStateModel>, action: GetNetworkDetails) {
+  getNetworkDetails(
+    ctx: StateContext<AppStateModel>,
+    action: GetNetworkDetails
+  ) {
     if (!action.payload) {
       return;
     }
     ctx.patchState({
-      selectedNetwork: null
+      selectedNetwork: null,
     });
     return this.service.getDetails(action.payload).pipe(
       map((res: any) => {
         if (res && res.network) {
           ctx.patchState({
-            selectedNetwork: res.network
+            selectedNetwork: res.network,
           });
           console.warn('GetNetworkDetails result', res.network);
           return;
@@ -80,7 +82,7 @@ export class AppState {
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         ctx.patchState({
-          selectedNetwork: null
+          selectedNetwork: null,
         });
         return of(null);
       })
@@ -88,23 +90,30 @@ export class AppState {
   }
 
   @Action(GetFavouriteNetworkStation)
-  getFavouriteNetworkStation(ctx: StateContext<AppStateModel>, action: GetFavouriteNetworkStation) {
+  getFavouriteNetworkStation(
+    ctx: StateContext<AppStateModel>,
+    action: GetFavouriteNetworkStation
+  ) {
     if (!action.payload) {
       return;
     }
     ctx.patchState({
-      favouredNetworkStation: null
+      favouredNetworkStation: null,
     });
     return this.service.getDetails(action.payload.networkId).pipe(
       switchMap((res: any) => {
         if (res && res.network && res.network.stations) {
-          return of(res.network.stations.filter((station: any) => station.id === action.payload.stationId));
+          return of(
+            res.network.stations.filter(
+              (station: any) => station.id === action.payload.stationId
+            )
+          );
         }
       }),
       map((stations: any[]) => {
         if (stations && stations.length) {
           ctx.patchState({
-            favouredNetworkStation: stations[0]
+            favouredNetworkStation: stations[0],
           });
           console.warn('GetFavouriteNetworkStation station', stations[0]);
           return;
@@ -113,11 +122,10 @@ export class AppState {
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         ctx.patchState({
-          favouredNetworkStation: null
+          favouredNetworkStation: null,
         });
         return of(null);
       })
     );
   }
-
 }

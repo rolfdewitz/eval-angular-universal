@@ -8,7 +8,11 @@ import { SharedModule } from '../shared/shared.module';
 import { FavouriteStationComponent } from './components/favourite-station/favourite-station.component';
 
 @NgModule({
-  declarations: [...fromComponents.components, ...fromContainers.containers, FavouriteStationComponent],
+  declarations: [
+    ...fromComponents.components,
+    ...fromContainers.containers,
+    FavouriteStationComponent,
+  ],
   imports: [CommonModule, MainRoutingModule, SharedModule],
 })
 export class MainModule {}

@@ -8,9 +8,8 @@ describe('StationFreeBikesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StationFreeBikesComponent ]
-    })
-    .compileComponents();
+      declarations: [StationFreeBikesComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

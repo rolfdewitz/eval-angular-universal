@@ -19,7 +19,6 @@ import { GetNetworkDetails } from '../../../../appStore/app.actions';
   styleUrls: ['./network-details.component.scss'],
 })
 export class NetworkDetailsComponent implements OnInit {
-
   id: string;
 
   @Select(AppState.selectedNetwork) selectedNetwork$: Observable<any>;

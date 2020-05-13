@@ -11,6 +11,6 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     NetworkRoutingModule,
     SharedModule,
-  ]
+  ],
 })
 export class NetworkModule {}

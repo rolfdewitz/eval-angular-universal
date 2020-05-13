@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppState } from '../../../../appStore/app.store';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
+import { AppState } from '../../../../appStore/app.store';
 import { GetNetworkDetails } from '../../../../appStore/app.actions';
 
 // export interface Article {
@@ -19,9 +19,10 @@ import { GetNetworkDetails } from '../../../../appStore/app.actions';
   styleUrls: ['./network-details.component.scss'],
 })
 export class NetworkDetailsComponent implements OnInit {
+
   id: string;
 
-  @Select(AppState.selectedNetwork) selectedNetwork$: Observable<any[]>;
+  @Select(AppState.selectedNetwork) selectedNetwork$: Observable<any>;
 
   listItems: any[];
 

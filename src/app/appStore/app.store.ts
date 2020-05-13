@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 
 import { AppStateModel } from './app-state.model';
 import { NetworkService } from '../main/services/network.service';
-import { GetNetworks, GetNetworkDetails } from './app.actions';
+import { GetNetworks, GetNetworkDetails, GetFavouriteNetworkStation } from './app.actions';
 
 @State<AppStateModel>({
   name: 'app',
   defaults: {
     networks: [],
     selectedNetwork: null,
+    favouredNetworkStation: null,
   }
 })
 
@@ -27,6 +28,11 @@ export class AppState {
   @Selector()
   static selectedNetwork(state: AppStateModel): any | null {
     return state.selectedNetwork;
+  }
+
+  @Selector()
+  static favouredNetworkStation(state: AppStateModel): any | null {
+    return state.favouredNetworkStation;
   }
 
   constructor(
@@ -53,7 +59,7 @@ export class AppState {
     );
   }
 
-  @Action(GetNetworkDetails)
+  @Action(GetNetworkDetails) // todo: change to GetSelectedNetwork
   getNetworkDetails(ctx: StateContext<AppStateModel>, action: GetNetworkDetails) {
     if (!action.payload) {
       return;
@@ -80,4 +86,38 @@ export class AppState {
       })
     );
   }
+
+  @Action(GetFavouriteNetworkStation)
+  getFavouriteNetworkStation(ctx: StateContext<AppStateModel>, action: GetFavouriteNetworkStation) {
+    if (!action.payload) {
+      return;
+    }
+    ctx.patchState({
+      favouredNetworkStation: null
+    });
+    return this.service.getDetails(action.payload.networkId).pipe(
+      switchMap((res: any) => {
+        if (res && res.network && res.network.stations) {
+          return of(res.network.stations.filter((station: any) => station.id === action.payload.stationId));
+        }
+      }),
+      map((stations: any[]) => {
+        if (stations && stations.length) {
+          ctx.patchState({
+            favouredNetworkStation: stations[0]
+          });
+          console.warn('GetFavouriteNetworkStation station', stations[0]);
+          return;
+        }
+      }),
+      catchError((err: HttpErrorResponse) => {
+        console.log(err);
+        ctx.patchState({
+          favouredNetworkStation: null
+        });
+        return of(null);
+      })
+    );
+  }
+
 }

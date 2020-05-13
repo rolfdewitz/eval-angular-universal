@@ -1,0 +1,9 @@
+<h2 class="m-3">Your favourite station</h2>
+<mat-card
+  *ngIf="favouredNetworkStation$ | async as favouredNetworkStation"
+  class="m-3"
+>
+  <mat-card-content>
+    <app-station-free-bikes [station]="favouredNetworkStation"></app-station-free-bikes>
+  </mat-card-content>
+</mat-card>

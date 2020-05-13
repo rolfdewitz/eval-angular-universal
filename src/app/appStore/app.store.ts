@@ -47,7 +47,7 @@ export class AppState {
           ctx.patchState({
             networks: res.networks,
           });
-          console.warn('GetNetworks #result', res.networks.length);
+          // console.warn('GetNetworks #result', res.networks.length);
           return;
         }
       }),
@@ -75,7 +75,7 @@ export class AppState {
           ctx.patchState({
             selectedNetwork: res.network,
           });
-          console.warn('GetNetworkDetails result', res.network);
+          // console.warn('GetNetworkDetails result', res.network);
           return;
         }
       }),
@@ -115,7 +115,7 @@ export class AppState {
           ctx.patchState({
             favouredNetworkStation: stations[0],
           });
-          console.warn('GetFavouriteNetworkStation station', stations[0]);
+          // console.warn('GetFavouriteNetworkStation station', stations[0]);
           return;
         }
       }),

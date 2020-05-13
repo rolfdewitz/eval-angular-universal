@@ -8,7 +8,9 @@ export class NetworkService {
 
   getList() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
-    return this.http.get(`${this.url}?fields=id,name,href,location`, { headers});
+    const completeUri = `${this.url}?fields=id,name,href,location`;
+    console.warn('Network: GET', completeUri);
+    return this.http.get(completeUri, { headers});
   }
 
   getDetails(id: string) {
@@ -16,6 +18,8 @@ export class NetworkService {
       return;
     }
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
-    return this.http.get(`${this.url}/${id}`, { headers});
+    const completeUri = `${this.url}/${id}`;
+    console.warn('Network: GET', completeUri);
+    return this.http.get(completeUri, { headers});
   }
 }

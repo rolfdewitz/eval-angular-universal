@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppState } from '../../../../appStore/app.store';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+
+import { AppState } from '../../../../appStore/app.store';
 import { GetNetworks } from '../../../../appStore/app.actions';
 
 // export interface Article {
@@ -17,6 +18,7 @@ import { GetNetworks } from '../../../../appStore/app.actions';
   styleUrls: ['./network-list.component.scss'],
 })
 export class NetworkListComponent implements OnInit {
+
   @Select(AppState.networks) networks$: Observable<any[]>;
 
   listItems: any[];
@@ -26,4 +28,5 @@ export class NetworkListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new GetNetworks());
   }
+
 }

@@ -26,7 +26,7 @@ import * as fromDirectives from './directives';
     FlexLayoutModule,
     HttpClientModule,
     fromComponents.components,
-    fromDirectives.directives
+    fromDirectives.directives,
   ],
   declarations: [fromComponents.components, fromDirectives.directives],
 })

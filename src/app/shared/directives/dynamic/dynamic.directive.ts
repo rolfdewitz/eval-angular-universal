@@ -4,7 +4,7 @@ import {
   ViewContainerRef,
   TemplateRef,
   Inject,
-  PLATFORM_ID
+  PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
 
@@ -27,5 +27,4 @@ export class DynamicDirective implements OnInit {
       this.viewContainer.createEmbeddedView(this.templateRef);
     }
   }
-
 }
